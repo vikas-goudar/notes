@@ -1,0 +1,81 @@
+~/.cache/nvim/.
+~/.config/nvim/.
+~/.local/share/nvim/.
+
+-
+
+neovim supports using `init.lua` as the config file. they should be placed in 
+	linux, macOs 
+		~/.config/nvim
+	windows 
+		~/AppData/Local/nvim/
+
+to avoid putting all the files inside `init.lua`, create seperate files and and load them in `init.lua` using `require`
+the first line of init.lua
+	```
+	require("config.options")
+	```
+	when neovim reads this line, it goes through `runtimepath` and searches for `lua/` and load `/config/options.lua`. The default `runtimepath` includes `/.confing/nvim`. This is why we put `lua/` inside it
+	`.` in the module name is treated as a directory seperator.
+	no need to type `.lua` extension
+
+-
+options
+in `init.lua` - `require("config.options")`
+can set options via both `vim.o` and `vim.opt`
+	`vim.opt` preferred because it is more lua-style
+
+-
+
+keymap
+`require("config.mappings")` in init.lua
+
+leaderkey - to specify custom bindings, people have recommended `space` online so i guess i'll use that
+
+vim.g.mapleader = " " -> vim.g is a table of global variables
+
+adding a new keymap
+vim.keymap.set({mode},{lhs},{rhs},{opts})
+	mode
+		"" -> normal, visual, select, operator-pending
+		"n" -> normal mode
+		"v" -> visual and select mode
+		"s" -> select mode
+		"x" -> visual mode
+		"o" -> operator-pending
+		"i" -> insert
+		"t" -> terminal
+		"!" -> insert insert and command-line mode
+
+	{lhs}
+		left-hand side of the mapping, the keys we want to map
+	
+	{rhs}
+		right-hand side of the mapping, the keys we want to execute
+	
+	{opts}
+		optional parameters
+		silent -> will not be echoed in the command-line
+		noremap -> disables recursive mapping
+
+-
+
+auto commands
+`require("config.autocmds")`
+`nvim_create_autocmd({event},{*opts})` -> runs automatically when an event happens
+
+-- set tab to 3 spaces when entering a buffer with .lua extension
+vim.api.nvim_create_autocmd("BuffEnter", {
+	pattern = {"*.lua"},
+	callback = function() 
+		vim.opt.shiftwidth = 3
+		vim.opt.tabstop = 3
+	end
+})
+
+-
+
+plugins
+`require(
+
+FUCK THIS SHIT I'LL DO THIS CRAP AFTER YEARS

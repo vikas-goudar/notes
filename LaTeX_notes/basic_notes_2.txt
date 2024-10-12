@@ -1,0 +1,190 @@
+\documentclass{article}
+
+\title{some title}
+\date{2024-09-01}
+\author{Vikas Goudar}
+
+\begin{document}
+\maketitle - adds the title,date and author
+\pagenumbering{gobble} - removes page number 
+\newpage 
+\pagenumbering{arabic} - adds page number - can also add {roman} for roman numberals
+\end{document}
+
+-
+
+\section{section name}
+\subsection{subsection name}
+\subsubsection{subsubsection name}
+section are numbered and appear in the table of contents of the document
+
+\paragraph{para name}
+\subparagraph{subpara name}
+paragraphs aren't numbered and don't appear in the table of contents of the document
+
+-
+
+\documentclass{article}
+\usepackage{packagename} - using package for ex. {amsmath} - include packages in the preamble
+\begin{document}
+
+-
+
+in \begin{equation}
+by default all the equations are numbered, import \amsmath and use \begin{equation*} to prevent numbering of equations
+
+-
+
+intline math - surround the expression using $ sign, $f(x) = x^2$
+
+\begin{equation} - equation environment can add multiple equations but they aren't aligned, use {align} for the other case
+\begin{align or align*}
+1 + 2 &= 3 \\ - \\ is the end of one line
+1 + 3 &= 4 - the andpersant is the point of alignment
+\end{align or align*}
+
+-
+
+images
+\usepackage{graphicx}
+
+\documentclass{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{figure} - figure takes of numbering and positioning the image
+	\includegraphics[width=\linewidth]{boat.jpg}
+	\caption{some caption for the photo} - text below the image
+	\label{fig:pic1} - used to refer to this image later by \ref{name} which is replaced with the number asigned to the figure
+\end{figure}
+
+\end{document}
+
+-
+
+image positioning 
+sometimes the image is set in places you wouldn't expect
+to avoid this use image positioning
+
+\begin{figure}[float]
+where float is
+	h - (here) - same location
+	t - (top) - top of the page
+	b - (bottom) - bottom of the page
+	p - (page) - on an extra page
+	! - adding this with the float, forces the location
+
+-
+
+multiple images
+use \subfigure and package \usepackage{subcaption}
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\begin{document}
+
+\begin{figure}[h!]
+	\centering
+	\begin{{subfigure}[b]{0.4\linewidth} - for subfigure [b] means to align the bottom of the subfigure with the surrounding content, similiarly [t]- top, [c] - center - linewidth here is accoring to figure
+		\includegraphics[width=\linewidth]{pic.jpg} - linewidth here is according to the width ofsubfigure
+		\caption{captiontext}
+	\end{subfigure}
+
+	\begin{subfigure}[b]{0.4\linewidth}
+		\includegraphics[width=\linewidth]{pic.jpg}
+		\caption{captiontext}
+	\end(subfigure}
+	\caption{captiontext}
+	\label(fig:pic}
+\end{figure}
+\end{document}
+
+-
+
+table of contents
+LaTeX uses section to make table of contents
+\tableofcontents
+\newpage
+
+-
+
+table of figures and tables
+\listoffigures
+\listoftables
+shows the caption
+
+-
+
+depth
+the value has to be set in the preamble and applies to the whole document
+\setcounter{tocdepth}{0} - shows nothing
+\setcounter{tocdepth}{1} - + section
+\setcounter{tocdepth}{2} - + subsection
+\setcounter{tocdepth}{3} - + subsubsection
+\setcounter{tocdepth}{4} - + paragraph
+\setcounter{tocdepth}{5} - + subparagraph
+
+if you don't want to change depth for all sections, set tocdepth  for each section from which point you want to change
+\addtocontents{toc}{\setcounter{todepth}{1}}
+\section - included
+\subsection - not included
+\subsubsection
+...
+\addtocontents{toc}{\setcounter{todepth}{3}}
+from here on till changed again, depth of sections is 3
+
+-
+
+spacing
+to change spacing for parts of document
+firstly
+\usepackage{setspace}
+
+then 
+\doublespacing
+...
+\singlespacing
+...
+
+-
+
+table
+\begin{table}{h!}
+	\begin{center}
+		\caption{captiontext}
+		\label{tab:tabl1}
+		\begin{tabular}{l|r|c}
+		$\alpha$ & $\beta$ & $\gamma$\\
+		\hline
+		1 & 2 & 3\\
+		\end{tabular}
+	\end{center}
+\end{table}
+
+
+-
+
+
+for code
+\usepackage{listings}
+
+\begin{lstlisting}[language=C, caption = {A sample C program}, label = lst:sample_code]
+\end{lslisting}
+
+\lstset{
+    language=C,                % Choose the language of the code
+    basicstyle=\ttfamily,      % Use a monospace font
+    numbers=left,              % Line numbers on the left
+    numberstyle=\tiny,         % Line numbers in tiny font
+    stepnumber=1,              % Line numbers every 1 line
+    frame=single,              % Add a frame around the code
+    captionpos=b,              % Position the caption below the code
+    breaklines=true,           % Enable line breaking
+    tabsize=4                  % Set tab size
+}
+
+another example
+

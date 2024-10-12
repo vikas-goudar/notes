@@ -1,0 +1,24 @@
+\contentsline {section}{\numberline {1}Introduction to Algorithm Design}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Insertion Sort}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Robot Tour Optimization (TSP)}{3}{}%
+\contentsline {paragraph}{Problem Statement}{3}{}%
+\contentsline {paragraph}{}{3}{}%
+\contentsline {subparagraph}{Input}{3}{}%
+\contentsline {subparagraph}{Output}{3}{}%
+\contentsline {paragraph}{}{3}{}%
+\contentsline {paragraph}{}{4}{}%
+\contentsline {paragraph}{}{4}{}%
+\contentsline {paragraph}{}{4}{}%
+\contentsline {paragraph}{}{5}{}%
+\contentsline {subsection}{\numberline {1.3}Job Scheduling}{5}{}%
+\contentsline {paragraph}{}{5}{}%
+\contentsline {subparagraph}{Input}{5}{}%
+\contentsline {subparagraph}{Output}{5}{}%
+\contentsline {paragraph}{}{5}{}%
+\contentsline {paragraph}{}{5}{}%
+\contentsline {paragraph}{}{5}{}%
+\contentsline {subsection}{\numberline {1.4}Proof by induction/recursion}{5}{}%
+\contentsline {paragraph}{}{5}{}%
+\contentsline {subparagraph}{Base Case}{5}{}%
+\contentsline {subparagraph}{Inductive Step}{6}{}%
+\contentsline {subparagraph}{Example 1}{6}{}%

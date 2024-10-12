@@ -1,0 +1,170 @@
+To start a new paragraph use an extra 'return'
+
+-
+
+To get a newline without starting a new paragraph use `\\`
+
+-
+
+To comment, `%` at the start of the sentence
+
+-
+
+\section{name of section}
+\subsection{name of subsection}
+\subsubsection{name of subsubsection}
+
+-
+
+table
+\begin{tabular}{r|cl}
+1st column & 2nd column & 3rd column\\
+\hline
+a & b & c
+\end{tabular}
+
+{r|cl} defines the alignment of the columns
+r - right
+c - centre
+l - left
+| - indicates that a vertical line should be added between those two columns
+& - seperates the columns in the body
+\\ - indicates the end of each line of the table
+\hline - a horizontal line
+
+-
+
+list
+unordered list
+\begin{itemize}
+\item this is one item
+\item this is another itme
+\end{itemize}
+
+ordered list
+\begin{enumerate}
+\item this is one item
+\item this is another item
+\end{enumerate}
+
+-
+
+\label{labelname}
+\ref{labelname}
+
+-
+
+math equations
+to enter a math expression in the middle of text - $math expression$
+to enter a math expression in its own line and centred - $$math expression$$
+
+to label an equation
+\begin{equation}
+\label{name}
+E = mc^2
+\end{equation}
+Some text \ref{equation}
+
+to label multiple equations
+the equations are aligned along & and each line is terminated by `\\`
+\begin{align}
+\label{einstein}
+E & = mc^2 \\
+\label{newton}
+F & = ma \\
+\label{euler}
+e^{i \pi} & = -1
+\end{align}
+
+to use align without numbering(if you wouldn't refer them later)
+use - \begin{align*}
+
+-
+
+^ - superscript
+_ - subscript
+{} - to include multiple characters in the super/subscript
+
+-
+
+fraction
+$\frac{numerator}{denominator}$
+
+-
+
+binomial coefficient
+$\binom{n}{k}$
+
+-
+
+modular arithmetic
+\pmod{n} - paranthesis
+\bdmos{n} - no paranthesis
+
+-
+
+discrete maths
+\forall 
+\exists
+
+-
+
+inequality
+\noeq - not equal
+\geq - greater than or equal
+\leq - less than or equal
+
+-
+
+\infty - for infinity
+\cdot - dot for multiplication
+\cup - union
+\cap - intersection
+\{ - to use {
+\} - to use }
+\approx - to use the waxy equal symbol
+
+-
+
+if you use [ or ] or any bracket as it is they don't scale according to the content
+\left and \right commands. These commands ensure that the parentheses, brackets, or other delimiters automatically scale with the content.
+\left( and \right) for parentheses.
+\left[ and \right] for square brackets.
+\left\{ and \right\} for curly braces.
+\left| and \right| for absolute value bars.
+
+-
+
+texts in equations are very wierd so
+\text{text to write} in the middle of an equation
+
+-
+
+matrices
+\begin{array}{clr}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{array}
+
+to add brackets around this matrix, use the \left and \right conecpt
+\left(
+\begin{array}{ccc}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{array}
+\right)
+
+-
+
+for summation and prod use \sum and \prod
+$$\sum_(i=1}^\infty \frac{1}{2^i} = 1$$
+
+-
+
+to create a macro
+\newcommand{\commandname}{definition} - replaces \commandname with definition
+to overwrite commands - \renewcommand{\commandname}{definition}
+
+
+
+
