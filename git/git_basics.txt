@@ -30,6 +30,14 @@ if ssh key setup, every git command with a link replace it by:
 // init git repo
 git init
 
+// setup remote repo
+// to avoid using <url> everytime
+git remote add <name> <url>
+// convention is for <name> to be "origin"
+
+// view remote repos
+git remote -v
+
 // see current status of working directory and staging area
 git status
 
