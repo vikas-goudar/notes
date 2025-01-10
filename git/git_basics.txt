@@ -94,5 +94,8 @@ git branch -D <branchname>
 // be on the branch where you want to merge into
 git merge <branchname>
 
-// pushing code 
+// pushing
 git push <url> <branch>
+
+// pulling
+git pull origin master
