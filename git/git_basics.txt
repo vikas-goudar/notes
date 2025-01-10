@@ -1,0 +1,86 @@
+// Git WorkFlow
+
+working directory | staging area | local repo | remote repo
+		  |	         |   (HEAD)   |  (MASTER)  
+		  |	         |            | 
+    git add       |  git commit  |  git push  | 
+ ---------------> | -----------> | ---------> |
+	                         |  	      |       
+	                         |            |
+	      git merge          | git fetch  | 
+ <------------------------------ | <--------- |
+		                              |
+		  git merge	              |	 
+ <------------------------------------------- |
+
+// github renamed default branch from master to main
+// so pushing master(local) to main(remote) creates a new branch called master on github
+git push <url> master:main
+or
+git <LeftMouse>git config --global init.defaultBranch main // to make default branch as main and not master on git
+
+
+// SSH
+if ssh key setup, every git command with a link replace it by:
+  instead of: https://github.com/username/reponame
+  use       : git@github.com:username/reponame.git 
+  Note      : both work
+
+
+// init git repo
+git init
+
+// see current status of working directory and staging area
+git status
+
+// add to staging area
+git add <filename>
+git add . // to add all files
+
+// remove from staging are
+git rm --cached <filename>
+
+// commit 
+git commit -m "commit message"
+
+// commit history
+git log
+git log --oneline
+
+// view previous commit state
+git checkout <id> // id of commit state to view
+git checkout master // to go back to current state
+
+// revert a commit
+// it adds a new commit that reverts the changes made in specified commit
+git revert <id> // id of commit state to remove 
+
+// reset back to a commit state
+// removes them from log as well, since we are resetting back
+git reset <id>
+// all commits made after the referenced commit state are removed
+// however working directory isn't changed, it still retains latest state
+git reset <id> --hard 
+// all commits made after the referenced commit state are removes
+// working directory is also changed to referenced commit state
+
+// create new branch
+git branch <branchname>
+
+// view all branches
+// the one with asterix is the current branch
+git branch -a
+
+// change branch
+git checkout <branchname>
+
+// delete branch
+git branch -d <branchname> // only works if it is merged
+git branch -D <branchname> 
+
+// merging branch
+// be on the branch where you want to merge into
+git merge <branchname>
+
+// pushing code 
+git push <url> <branch>
