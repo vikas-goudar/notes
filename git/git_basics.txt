@@ -35,6 +35,10 @@ git init
 git remote add <name> <url>
 // convention is for <name> to be "origin"
 
+// clone
+git clone <url>
+// this by default sets up origin as alias for remote repo
+
 // view remote repos
 git remote -v
 
