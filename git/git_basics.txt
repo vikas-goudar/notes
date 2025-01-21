@@ -1,23 +1,23 @@
 // Git WorkFlow
 
 working directory | staging area | local repo | remote repo
-		  |	         |   (HEAD)   |  (MASTER)  
-		  |	         |            | 
+								  |	     		     |   (HEAD)   |  (MASTER)  
+		  						|	        		 |            | 
     git add       |  git commit  |  git push  | 
  ---------------> | -----------> | ---------> |
-	                         |  	      |       
-	                         |            |
-	      git merge          | git fetch  | 
+	                         			 |    	      |       
+	                         			 |            |
+	      git merge                | git fetch  | 
  <------------------------------ | <--------- |
-		                              |
-		  git merge	              |	 
+		                                          |
+		  git merge	                              |	 
  <------------------------------------------- |
 
 // github renamed default branch from master to main
 // so pushing master(local) to main(remote) creates a new branch called master on github
 git push <url> master:main
 or
-git <LeftMouse>git config --global init.defaultBranch main // to make default branch as main and not master on git
+git config --global init.defaultBranch main // to make default branch as main and not master on git
 
 
 // SSH
@@ -86,6 +86,9 @@ git branch -a
 // change branch
 git checkout <branchname>
 
+// create branch and switch to it
+git checkout -b <branchname>
+
 // delete branch
 git branch -d <branchname> // only works if it is merged
 git branch -D <branchname> 
@@ -99,3 +102,6 @@ git push <url> <branch>
 
 // pulling
 git pull origin master
+
+
+

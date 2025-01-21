@@ -1,0 +1,85 @@
+// pragma once 
+
+  #pragma once, is a non-standard yet widely supported alternative for #ifndef file guards
+  most modern compliers support it, it is said it can be faster for compilers that support it since it uses some kind of caching but I didn't find any source supporting it
+  one advantage I can think of it prevents the accidental case where when using #ifdef _UNIQUE_NAME_ if the <_unique_name_> is repeated it will not work as expected, #pragma once, avoids this
+
+// ---
+
+// ifndef
+
+  #ifndef name or #if !defined name
+  #define name
+  ...
+  #endif
+  it is a preprocessor to prevent the same header file from being included multiple times in the cpp file which could otherwise cause errors (redeclaration and so on...)
+  this is called multiple include optimization
+
+// ---
+
+// compilation
+
+  the preprocessor basically takes the cpp file, expands all the direct and indirect #include statements minus the the lines ignored by conditional preprocessing statements, this is called the "translation unit"
+  it is then passed the entire file to the compiler
+  lets assume we have class.h, class.cpp and main.cpp and main.cpp includes class.h
+  while compiling main.cpp the compiler gets the declarations for class.cpp via class.h and it compiles main.cpp into some object file let it be main.obj, all the unresolved variables and functions are replaced with references
+  the compiler compiles class.cpp into some object file let it be class.obj
+  to produce the final exectuable both these files are linked by the linker to produce the final executable 
+  note the entire file is not just blindly added as far as I have read it depends on the linker and the optimization flags used
+  'cheap linkers' just copy everything even if it isn't refernced, others with the appropriate flags build builds a recursive list of which object modules are needed and included those items only
+
+// ---
+
+
+// namespace
+  namespace a {void f();}
+  namespace b {
+    a::f() {} // this definition is wrong, we cannot define it in another namespace
+  }
+
+  if namespace too long like a::b::c::d:: and so on .. we can do namespace shortername = a::b::c:: and so on ..
+
+  using namespace std; is *very* bad not just for readable reasons you can also call the wrong function accidently like for ex: 
+  std::distance becomes distance or std::swap becomes swap and so error if you used swap() expecting something else
+  if you really want to use it, do it with select object like for ex: using std::string
+  this is because of the interface principle, 
+  basically 
+  for ex:
+  namespace ns {
+  class A {};
+  void print (A a) {}
+  } // namespace ns
+  using this in code
+  ns::A a;
+  print(a)
+  here we don't have to specify the namespace while calling the function because C++ considers a function taking a type as an argument as being part of the interface for that type, so no need to specify the namespace because the 
+  parameter implies the namespace
+  now lets assume namespace ns did not have a print function given, so we create it ourselves to use it in our own namespace
+  ex:
+  namespace ns {
+  class A {};
+  }
+  void print (A a) {};
+  now this works fine, but if one day a print function is defined in namespace ns it will use that function rather than the one provided by us. therefore it can cause unexpected behavior, my compiler just throws ambigous error.
+
+// ---
+
+
+constexpr
+oops
+constructor init list
+const reference
+method const {}
+static function
+operator overloading
+convention: private var -> var_
+constructor = default
+method = default
+#if defined
+templates
+this
+friend method
+enum
+enum class
+explicit
+assert
