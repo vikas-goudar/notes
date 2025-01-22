@@ -1,0 +1,5 @@
+understand the cpp used in stockfish and lc0 with notes
+read OS book
+hbase
+
+secretary shit

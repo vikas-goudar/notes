@@ -45,23 +45,46 @@
   this is because of the interface principle, 
   basically 
   for ex:
-  namespace ns {
-  class A {};
-  void print (A a) {}
+  namespace ns {  
+    class A {};
+    void print (A a) {}
   } // namespace ns
   using this in code
   ns::A a;
   print(a)
   here we don't have to specify the namespace while calling the function because C++ considers a function taking a type as an argument as being part of the interface for that type, so no need to specify the namespace because the 
   parameter implies the namespace
+  or another explanation I found which I think is correct I am not sure
+  you don't have to qualify the namespace for functions if one or more argument types are defined in the namespace of the function
   now lets assume namespace ns did not have a print function given, so we create it ourselves to use it in our own namespace
   ex:
   namespace ns {
-  class A {};
+    class A {};
   }
   void print (A a) {};
   now this works fine, but if one day a print function is defined in namespace ns it will use that function rather than the one provided by us. therefore it can cause unexpected behavior, my compiler just throws ambigous error.
 
+  inline namspace
+  kind of a way to do versioning
+  nested inline spaces look and act as if they were declared in non-inline parent namespace, there can be nested inline namespace and all of them percolate upwards to the first non-inline namespace
+  example to understand usage:
+
+  namespace std {
+    #if __cplusplus < 1997L // pre-standand cpp
+      inline
+    #endif
+      namespace pre_cxx_1977 {
+        ...
+      }
+    #if __cplusplus >= 1997L 
+      inline
+    #endif
+      namespace cxx_1977L {
+        ...
+      }
+  }
+
+anonymous namespace
 // ---
 
 
@@ -83,3 +106,5 @@ enum
 enum class
 explicit
 assert
+
+
