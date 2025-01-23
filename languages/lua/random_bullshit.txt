@@ -1,0 +1,44 @@
+comments
+	-- single line comments
+	--[[ multi
+		line
+		comments
+	--]] 
+
+variable
+	-- global variable
+	var = 5
+	-- local variable
+	local var = 5
+	
+	-- int
+	local var = 5
+	-- string
+	local string = "hello world"
+	local string = 'hello world'
+	local multi_string = [[ hello
+				world ]]
+	-- bool
+	local truth, lies = true, false
+	-- nil
+	local no = nil
+
+function
+	local function hello(name)
+		print("hello", name)
+	end
+
+anonymous function
+	local var = function(name)
+		print("hello", name)
+	end
+	-- to exec do, var("vikas")
+
+	-- immediate execution
+	local result = (function()
+				local x = 10
+				return x*x
+			end)()
+	
+	
+
