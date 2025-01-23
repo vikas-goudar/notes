@@ -1,0 +1,6 @@
+nvim .
+	% to create file
+	d to create directory
+
+:
+	:Ex to go to explorer

@@ -84,7 +84,13 @@
       }
   }
 
-anonymous namespace
+  anonymous namespace
+  namespace {
+    ...
+  }
+
+  all content declared inside an anonymous namespace is treated as if part of the parent namespace with internal linkage (i.e can't be seen outside of the file in which the unamed namespace is defined)
+
 // ---
 
 
@@ -106,5 +112,5 @@ enum
 enum class
 explicit
 assert
-
+static
 
