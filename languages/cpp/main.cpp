@@ -1,17 +1,11 @@
 #include <iostream>
 
-namespace ns {
-  class A {};
-  void print(A a) {
-    std::cout << "namespace ns";
-  }
-}
-
-void print(ns::A a) {
-  std::cout << "global";
+namespace {
+	int i = 2;
 }
 
 int main() {
-  ns::A a;
-  print(a);
+	std::cout << i;	
+
+	return 0;
 }

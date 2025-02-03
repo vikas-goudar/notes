@@ -1,0 +1,149 @@
+comments
+	-- single line comments
+	--[[ multi
+		line
+		comments
+	--]] 
+
+variable
+	-- global variable
+	var = 5
+	-- local variable
+	local var = 5
+	
+	-- int
+	local var = 5
+	-- string
+	local string = "hello world"
+	local string = 'hello world'
+	local multi_string = [[ hello
+				world ]]
+	-- bool
+	local truth, lies = true, false
+	-- nil
+	local no = nil
+
+anonymous function
+	local var = function(name)
+		print("hello", name)
+	end
+	-- to exec do, var("vikas")
+
+	-- immediate execution
+	local result = (function()
+				local x = 10
+				return x*x
+			end)()
+	
+	
+function
+	local function hello(name)
+		print("hello", name)
+	end
+
+	-- high order function
+	local high_order = function(value)
+		return function(another)
+			return value + another
+		end
+	end
+	local add_one = high_order(1)
+	print(add_one(2))
+
+tables
+	-- it is 1-indexed
+	
+	-- arrays
+	local list = {"first", 2, false, function() print("hello world") end}
+	print(list[1])
+
+	-- maps
+	local map = {
+		-- it acts as a string, requirement -> no spaces
+		literal_key = "a string",
+		["any string"] = "also works",
+		[function() end] = true
+	}
+	print(map.literal_key)
+	print(map["any string"])
+
+looping
+	-- arrays
+	local list = {"vikas", "rajani"}
+	-- # means the length
+	for index = 1, #list do
+		print(index, list[index])
+	end
+
+	for index, value in ipairs(list)
+		print(index, value)
+	end
+
+	-- maps
+	local map = {vikas = 10, rajani = 10}
+	for key, valye in pairs(map)
+		print(key, value)
+	end
+
+conditional if statements
+	if loves_coffe then
+		print("will you come drink coffee with me")
+	else
+		print("you should try out coffee")
+	end
+
+	-- elseif for else if cases	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
