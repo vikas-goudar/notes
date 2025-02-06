@@ -104,17 +104,88 @@
 
 // ---
 
-
-// constexpr
-	constexpr specifies that these entities can be evaluated at compile time, the can be used with compile time constexpr
-	a constexpr function is also implicitly inline
-
-	constexpr variables
-	a variable can be declared as constexpr 
+// compile time assert
+	static_assert(condition, "error message")
+	
+	static_assert(sizeof(int) == 4, "size of int must be 4 bytes")
 
 // ---
-oops
-constructor init list
+
+// run time assert
+
+	assert(expression)
+	assert(var == 3)
+
+// --- 
+
+// constexpr
+	constexpr specifies that these entities can be evaluated at compile time
+	a constexpr variable is implicity a const
+	a constexpr function is also implicitly inline
+	a constexpr func is evaluated at compile time if its parameters are constants knownn at compile time
+
+	constexpr var
+		must be defined at compile time
+		constexpr int var = 1;
+	
+	constexpr func
+		may or not be executed at compile time, to evaluate at compile time all the parameters should be compile time known and result should be stored in a compile time variable 
+		constexpr int func(){}
+	
+	constexpr template
+		template <constexpr int n>
+		int func(){}
+
+	constexpr constructors
+		creates constant objects at compile time if all the constructor arguments are compile time constants
+
+		constexpr Class(arguments) : init list {}
+	
+	cosntexpr pointers
+		both the pointer and the value it points to must be known at compile time
+		constexpr int x = 2;
+		constexpr const int* ptr = &x;
+
+// ---
+
+// const pointer and pointer to const
+	pointer to constant type
+		const int* ptr
+	
+	constant pointer to type
+		int* const ptr;
+	
+// ---
+
+// smart pointers
+	with raw pointers the programmer is responsible for allocation and deallocation of memory
+	possible erorrs with raw pointers
+		memory leaks
+			if a dynamically allocated object is not explicitly deleted, it remains in memory and consumes resources
+
+		dangling pointers
+			when the memory location is deallocated, the pointer is called a dangling pointer
+			accessing through a the dangling pointer can lead to unexpected errors
+
+		double deletion
+			undfined beahaviour if deallocating the pointer twice
+
+		exception safety
+			if exception is thrown during resource allocation and dellocation, it can lead to resource leaks and dangling pointers
+
+	smart pointers automatically handle object deletion
+
+	1. unique_ptr
+	2. shared_ptr
+	3. weak_ptr
+
+
+//
+
+// constructor init list
+		
+// ---
+
 const reference
 method const {}
 static function
@@ -132,3 +203,25 @@ explicit
 assert
 static
 mutable 
+
+// constructors
+
+	default
+		no parameters
+		cpp by default provides a default constructor if nothing is provided
+		if only a parameterized constructor is provided, default constructor is not present automatically
+
+		classname() {}
+
+		to create object
+		classname c;
+		classname* c = new classname;
+		classname* c = new classname();
+	
+	copy constructor
+		
+		
+
+// ---
+
+oops

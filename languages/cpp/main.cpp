@@ -1,11 +1,16 @@
 #include <iostream>
 
-namespace {
-	int i = 2;
-}
+class A {
+	int x;
+	public:
+		A(int x) {
+			this->x = x;	
+		}
+};
+
 
 int main() {
-	std::cout << i;	
+	A a;
 
 	return 0;
 }
