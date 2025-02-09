@@ -1,16 +1,16 @@
 // Git WorkFlow
 
 working directory | staging area | local repo | remote repo
-								  |	     		     |   (HEAD)   |  (MASTER)  
-		  						|	        		 |            | 
+                  |              |   (HEAD)   |  (MASTER)  
+                  |              |            | 
     git add       |  git commit  |  git push  | 
  ---------------> | -----------> | ---------> |
-	                         			 |    	      |       
-	                         			 |            |
-	      git merge                | git fetch  | 
+                                 |            |       
+                                 |            |
+	      git merge          | git fetch  | 
  <------------------------------ | <--------- |
-		                                          |
-		  git merge	                              |	 
+                                              |
+		  git merge                   |	 
  <------------------------------------------- |
 
 // github renamed default branch from master to main
