@@ -148,6 +148,14 @@
 
 // ---
 
+
+// pointers
+
+	de-reference takes two memory lookups 	
+		go to address of pointer, then go to the address stored by the pointer
+
+// ---
+
 // const pointer and pointer to const
 	pointer to constant type
 		const int* ptr
@@ -194,7 +202,34 @@ convention: private var -> var_
 constructor = default
 method = default
 #if defined
-templates
+
+// templates
+
+	both class and typename works
+	i.e
+	template<class T> OR template<typename T>
+
+	note: template instantiation(when the compiler generates class/function from the template) happens at compile time
+	for ex:
+		let there be function 
+		template<typename T>
+		void func(T x, T y);
+		the line -> func<int>(a , b) will creata function -> func(int a, int b) during compilation
+
+	you can also use non-type template parameters
+	for ex:
+		template<typename T, int N>
+
+	Templates do not generate any code on their own, they generate a template for producing code. 
+	In order to actually produce code, you must instantiate the template with concrete types. 
+	The compiler then takes the template, inserted the types that you provided, and generates the actual code
+	If the application uses the template function with multiple data types, each type results in a different substitution, one for each type.
+
+
+
+
+// ---
+
 this
 friend method
 enum
