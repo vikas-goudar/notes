@@ -149,11 +149,144 @@
 // ---
 
 
-// pointers
+// pointers and memory 
 
 	de-reference takes two memory lookups 	
 		go to address of pointer, then go to the address stored by the pointer
+	
+	there are two ways to instantiate an object in cpp
+		1. ClassName* p = new ClassName;
+			 new ClassName creates an object and returns its address which is stored in pointer p
+			 note: here the object is created on the heap
+		2. ClassName p;
+			 creates a new object and variable p directly names the object
+			 note: here the object is created on the stack
 
+	main memory/RAM have many gigabytes of ram and each byte of memory has a unique address, we can think of RAM as a contigous array of bytes and addresses as the index of bytes.
+	most variables are larger than one byte, so address of each variable is the address of the first byte of that variable.
+
+	how variables are handled by compilers
+		1. when variables occur on the left side of assignment operator, the compiler uses the address or l-value
+		2. when variables occur on the right side of assignment operator, the compiler uses the value or r-value
+
+		this is also called as being context sensitive, since the meaning of the variable symbol as interpreted by the compiler depends on where it appears in the program
+
+	memory organization of a process
+		| - heap
+		|    |
+		|    V
+		|
+		|
+		|    T
+		|    |
+		| - stack
+		| - static and 
+		| - global variables
+		| - machine code for process
+		
+		therefore memory is managed in three logical memory regions
+			1. where global and static data is stored, it is stored when the process starts and is stored for the lifetime of the process
+			2. stack, stores all the automatic(non-static) data, grows as needed
+			3. heap, stores all the data allocated using new and delete, grows as needed
+		
+		the heap is more flexibile than the stack, stack only allows allocation and deallocation from the top whereas the heap allows allocation and deallocation from anywhere thus heaps can have "holes"
+		this makes stack more simpler and heap more complex since when heap involves more computations
+			for ex:
+				when allocating the heap must be scanned to find a contigous block of memory which can meet demand for allocation
+				when deallocating the help must check whether neighbouring blocks are non-allocated if so they must coalesce
+
+		intersting thing
+		since the pointer is itself an automatic variable, it is stored on the stack while the block of memory it points to is stored on heap
+
+	
+		stack
+			automatic variables are automatically allocated when the come in scope and deallocated when they leave scope on the stack	
+
+		heap
+			block of memory allocated is independent of scope, so just because scope is exited doesn't mean memory is deallocated
+			new
+				allocates memory on the heap
+				not really used for small data types like char, int, double preferred for arrays, structures and objects
+				it executes 3 things
+					.) it allocates memory on the heap
+					.) if datatype is an object, calls the constructor
+					.) returns the address
+
+				ex:
+					char* 	   c = new char; // not useful
+					double* 	 scores = new double[size]
+					ClassName* ptr = new ClassName;
+
+			delete
+				deallocates memory on the heap
+				ex:
+					delete c; // where c is a char pointer
+					delete[] scores; // for array, [] needed to call destructors of elements
+
+				common error with delete
+					'delete' a value that doesn't point to memory allcoated on the heap
+					ex:
+						.)	
+							ClassName* p;
+							delete p; // error since p not initialized
+
+						.)
+							ClassName obj;
+							ClassName* p = &obj;
+							delete p; // error since obj is allocated on stack NOT heap
+
+
+		in c++ heap memory must be explicitly de-allocated
+		memory leak
+			if ptr is lost before heap is de-allocated that block of memory becomes garbage and unaccessible
+		automatic garbage collection
+			to avoid memory leaks, languages like java provide automatic garbage collection
+			java's automatic garbage collection follows the following steps
+				1. mark all data allocated using new as garbage
+				2. goes through all pointers and removes mark of garbage from all reachable data 
+				3. frees all the garbage data and returns to heap
+
+		pointer arithmetic
+			applicable in a contigous block of memory
+			.) pointer + int
+			.) pointer - int
+			.) pointer2 - pointer1
+
+			pointer + int and  pointer - int -> gives a new address that points to another element 
+			pointer2 - pointer1 -> calculates number of elements between the two pointers
+
+			since data type can be more than 1 byte there are implicit calculations
+			i.e 
+				pointer + or - int -> pointer + or - int*sizeof(datatype)
+					so if datatype is integer
+					pointer + int will give a pointer that points to the next int
+					if this was no the case we would just jump to the next byte of the same int element
+				
+				pointer2 - pointer1 -> (pointer2 - pointer1)/sizeof(datatype)
+					since we want to know number of elements not the number of bytes
+
+// ---
+
+// nullptr
+
+	to denote that a pointer doesn't point to anything c++ provides 3 methods
+	ptr = nullptr; // preferred
+	ptr = NULL;
+	ptr = 0;
+
+// --- 
+
+
+// secure programming practices with pointers
+
+	initialize pointers to nullptr if no value known, since if not initialized it contains random bit
+		Class* ptr = nullptr;
+
+	check for nullptr
+		it is not possible to access data via a nullptr
+			if (p == nullptr)
+				cerr << .....
+		
 // ---
 
 // const pointer and pointer to const
