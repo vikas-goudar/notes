@@ -358,10 +358,9 @@ method = default
 	The compiler then takes the template, inserted the types that you provided, and generates the actual code
 	If the application uses the template function with multiple data types, each type results in a different substitution, one for each type.
 
-
-
-
 // ---
+
+
 
 this
 friend method
