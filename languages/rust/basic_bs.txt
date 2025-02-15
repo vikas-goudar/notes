@@ -1,0 +1,35 @@
+// compiling 
+
+	rustc <filename>
+
+	if its a big project just use cargo
+
+// ---
+
+// cargo
+
+	rust's build system and package manager
+
+	creating new project
+		cargo new <project name>
+
+// ---
+
+// macro 
+
+	using a ! means calling a macro
+	ex:
+		println!();
+
+// --- 
+
+
+// printing
+
+	call macro println;
+	ex:
+		println!("hello world");
+
+// ---
+
+
