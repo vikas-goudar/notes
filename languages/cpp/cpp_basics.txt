@@ -298,33 +298,14 @@
 	
 // ---
 
-// smart pointers
-	with raw pointers the programmer is responsible for allocation and deallocation of memory
-	possible erorrs with raw pointers
-		memory leaks
-			if a dynamically allocated object is not explicitly deleted, it remains in memory and consumes resources
+smart pointers
 
-		dangling pointers
-			when the memory location is deallocated, the pointer is called a dangling pointer
-			accessing through a the dangling pointer can lead to unexpected errors
-
-		double deletion
-			undfined beahaviour if deallocating the pointer twice
-
-		exception safety
-			if exception is thrown during resource allocation and dellocation, it can lead to resource leaks and dangling pointers
-
-	smart pointers automatically handle object deletion
-
-	1. unique_ptr
-	2. shared_ptr
-	3. weak_ptr
-
-
-//
-
-// constructor init list
+constructor init list
 		
+// structures
+
+  
+
 // ---
 
 const reference
